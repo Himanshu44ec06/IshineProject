@@ -8,13 +8,20 @@ module.exports = {
             var  dbModel  =  new DbModel();
             dbModel.username  = model.username || 'empty';
             dbModel.otp = Math.RandomNumber(OtpLength);
+            dbModel.IsActive = true;
+            return    dbModel.save();    
+    },
 
-            try {
-               return    dbModel.save();
-            }catch(ex){
-                return null;
-            }
+    DisableOtp  : function(model){
+        var  conditions =  { username : model.username || 'empty'},
+        update =   { IsActive :  false},
+        options  = { multi :  true};
+        return  DbModel.update(conditions,update);
 
+    },
+
+    MatchOtp  : function(model){
+        return DbModel.find({username :  model.username || '', otp  : model.otp || 0, IsActive : true });
     }
 
 }
