@@ -6,7 +6,7 @@ module.exports  = {
     RegisterNew  : function(model){
         var  dbModel  =  new DbModel();
         dbModel.Phone  = model.Phone || 'empty';
-        dbModel.Location = model.Phone  || [];
+        dbModel.Location = model.Location  || [];
         dbModel.Services  = model.Services  || [];
         dbModel.Devices  = model.Devices  || [];
         dbModel.Password  =  model.Password || '';
