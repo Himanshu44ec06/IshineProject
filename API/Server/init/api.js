@@ -9,7 +9,7 @@ const app = function () {
   function App () {}
 
   App.prototype.start = function () {
-    const appObject = express();
+    var appObject = express();
     appObject.use(bodyparser.json());
     appObject.use(express.json());
     appObject.use(express.urlencoded({extended: true}));
@@ -33,11 +33,18 @@ const app = function () {
 
   };
   App.prototype.registerRoutes = function (appObject) {
+        // services Route  
+        const commonRoute = require('../modules/common/route');
+        appObject.use('/api/' + commonRoute.path, commonRoute.protected);
+        appObject.use('/api/' + commonRoute.path, commonRoute.unprotected);
 
+        const  vendorRoute = require('../modules/vendor/route');
+        appObject.use('/api/' + vendorRoute.path, vendorRoute.protected);
+        appObject.use('/api/' + vendorRoute.path, vendorRoute.unprotected);
    };
 
   App.prototype.enableLogger=function(appObject){
-    appObject.use(morgan('combined', { stream: winston.stream }));
+    //appObject.use(morgan('combined', { stream: winston.stream }));
    
   }
 

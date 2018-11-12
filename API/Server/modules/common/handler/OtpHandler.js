@@ -16,7 +16,7 @@ module.exports = {
         var  conditions =  { username : model.username || 'empty'},
         update =   { IsActive :  false},
         options  = { multi :  true};
-        return  DbModel.update(conditions,update);
+        return  DbModel.update(conditions,update,options);
 
     },
 

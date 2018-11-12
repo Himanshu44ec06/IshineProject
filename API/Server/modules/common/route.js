@@ -1,5 +1,5 @@
 const express  = require('express'),
-  SharedEnums = require('../common/sharedEnums'),
+SharedEnums = require('../shared/sharedEnums'),
   ProtectedRoute =  express.Router(),
   Route = express.Router(),
   controller =  require('./controller/otpController');

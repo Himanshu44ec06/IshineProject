@@ -4,7 +4,8 @@
   "description": "ishine api",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout  15000 --recursive"
+    "test": "mocha --timeout  15000 --recursive",
+    "start" : "node server.js"
   },
   "author": "himanshu parkash",
   "license": "ISC",
