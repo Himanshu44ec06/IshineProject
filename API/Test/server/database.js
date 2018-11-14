@@ -11,6 +11,11 @@ mongoose.connection
 
 beforeEach((done)=>{
 
-   done();
+    const  { catalogmodels } =  mongoose.connection.collections;
+
+    catalogmodels.drop( ()=>{
+             done();
+    });
+   
 
 });
