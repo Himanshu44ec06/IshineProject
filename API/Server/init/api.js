@@ -44,8 +44,8 @@ const app = function () {
 
 
         const  catalogRoute = require('../modules/catalog/route');
-        appObject.use('/api/' + vendorRoute.path, catalogRoute.protected);
-        appObject.use('/api/' + vendorRoute.path, catalogRoute.unprotected);
+        appObject.use('/api/' + catalogRoute.path,catalogRoute.guard,catalogRoute.protected);
+        appObject.use('/api/' + catalogRoute.path, catalogRoute.unprotected);
    };
 
   App.prototype.enableLogger=function(appObject){

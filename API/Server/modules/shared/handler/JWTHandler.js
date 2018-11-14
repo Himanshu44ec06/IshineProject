@@ -8,5 +8,9 @@ module.exports = {
            return jwt.sign(input, config.token, {
                 expiresIn: expireTime
             });
+    },
+
+    validate: (token) =>{
+         return   jwt.verify(token,config.token);
     }
 }

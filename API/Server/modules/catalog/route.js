@@ -2,7 +2,9 @@ const express  = require('express'),
   SharedEnums = require('../shared/sharedEnums'),
   ProtectedRoute =  express.Router(),
   Route = express.Router(),
+  Guard  =  require('./handler/GuardHandler'),
   controller =  require('./controller/CatalogController');
+
 
   
   ProtectedRoute.route('/Add').post(controller.Add);
@@ -13,5 +15,5 @@ const express  = require('express'),
     protected: ProtectedRoute,
     unprotected: Route,
     path : SharedEnums.moduleRoute.Catalog,
-    guard:{}
+    guard: Guard.Guard,
   };
