@@ -14,7 +14,7 @@ module.exports = {
     },
 
     GetByID :  (req,res) =>{
-        Handler.GetByID(req.query.Id).then((response)=>{
+        Handler.GetByID( req.params.Id).then((response)=>{
             ResponseHandler.sendResponse(res,200,response)
         }).catch((err)=>{
             ErrorHandler.sendResponse(res,400,err);

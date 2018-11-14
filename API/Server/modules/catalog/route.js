@@ -7,7 +7,7 @@ const express  = require('express'),
   
   ProtectedRoute.route('/Add').post(controller.Add);
   Route.route('/GetAll').get(controller.GetAll);
-  Route.route('/GetByID').get(controller.GetByID);
+  Route.route('/GetByID/:Id').get(controller.GetByID);
 
   module.exports = {
     protected: ProtectedRoute,
