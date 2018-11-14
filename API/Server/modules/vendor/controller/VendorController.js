@@ -5,10 +5,21 @@ const  ErrorHandler =  require('../../shared/handler/errorHandler');
 
 module.exports = {  
  
+
+    CheckForExisted  : (req,res)=>{
+
+        VendorHandler.CheckForExisted(req.body).then((response)=>{
+            if(response.length > 0)
+                ResponseHandler.sendResponse(res,200,{"Result" : true});
+            else 
+            ResponseHandler.sendResponse(res,200,{"Result" : false});
+        })
+    },
+
     Register  : (req,res) =>{
             VendorHandler.CheckForExisted(req.body).then((response)=>{
                 if(response.length > 0)
-                    ErrorHandler.sendResponse(res,null,{errorCode :  '101'});
+                    ErrorHandler.sendResponse(res,200,{errorCode :  '101'});
                 
                 VendorHandler.RegisterNew(req.body).then((responseFromRegister)=>{
                     ResponseHandler.sendResponse(res,201,responseFromRegister)

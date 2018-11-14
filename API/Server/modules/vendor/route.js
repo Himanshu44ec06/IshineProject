@@ -7,6 +7,7 @@ const express  = require('express'),
   
   Route.route('/Register').post(controller.Register);
   Route.route('/Login').post(controller.Login);
+  Route.route('/CheckForExisted').post(controller.CheckForExisted);
 
   module.exports = {
     protected: ProtectedRoute,
