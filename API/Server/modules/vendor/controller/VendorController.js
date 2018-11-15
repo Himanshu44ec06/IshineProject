@@ -20,12 +20,13 @@ module.exports = {
             VendorHandler.CheckForExisted(req.body).then((response)=>{
                 if(response.length > 0)
                   ResponseHandler.sendResponse(res,200,{errorCode :  '101'});
-                
+                else {
                 VendorHandler.RegisterNew(req.body).then((responseFromRegister)=>{
                     ResponseHandler.sendResponse(res,201,responseFromRegister)
                 }).catch((err)=>{
                     ErrorHandler.sendResponse(res,null,err);
                 });
+            }
             }).catch((err)=>{
                 ErrorHandler.sendResponse(res,null,err);
             })
