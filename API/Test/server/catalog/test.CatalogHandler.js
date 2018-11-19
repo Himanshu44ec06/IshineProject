@@ -5,7 +5,7 @@ var   Tree  = require('../../../Server/modules/shared/handler/CatalogGenerate');
 
 describe("CataLog Handler",()=>{
 
-        it("Add  Category",(done)=>{
+        xit("Add  Category",(done)=>{
 
            
 

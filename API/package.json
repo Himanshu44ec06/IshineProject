@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --timeout  15000 --recursive",
-    "start" : "node server.js"
+    "start": "node server.js"
   },
   "author": "himanshu parkash",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "mongoose-unique-validator": "^2.0.2",
     "morgan": "^1.9.1",
     "npm": "^6.4.1",
+    "redis": "^2.8.0",
     "winston": "^3.1.0"
   },
   "devDependencies": {
