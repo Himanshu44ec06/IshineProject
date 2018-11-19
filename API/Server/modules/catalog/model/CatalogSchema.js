@@ -15,6 +15,12 @@ const  schema  =  mongoose.Schema({
         trim : true
     } ,
 
+    CatalogIcon : {
+        type : String,
+        require : true,
+        trim : true
+    },
+
     Status : {
         type :  Number,
         require : true

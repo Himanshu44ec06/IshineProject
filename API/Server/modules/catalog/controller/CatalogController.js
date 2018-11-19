@@ -24,7 +24,15 @@ module.exports = {
 
     GetAll : (req,res) =>{
         Handler.GetAll(req.query.Id).then((response)=>{
-            ResponseHandler.sendResponse(res,200,response)
+            var result  = [];
+            response.map((catalog)=>{
+                result.push({
+                    Id :  catalog._id,
+                    CatalogName  : catalog.CatalogName,
+                    CatalogIcon  : catalog.CatalogIcon
+                });  
+            })
+            ResponseHandler.sendResponse(res,200,result);
         }).catch((err)=>{
             ErrorHandler.sendResponse(res,400,err);
         });

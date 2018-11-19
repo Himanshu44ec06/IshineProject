@@ -27,5 +27,11 @@ module.exports  = {
                 dbModel.Devices.push(deviceId);
         
         return dbModel.save();
+    },
+
+    GetVendorByService  : function(location,service){
+        return  DbModel.find({ Services  :  service , Location :  location,Status: { $gt: 0, $lt: 100 } });
     }
+
+
 }

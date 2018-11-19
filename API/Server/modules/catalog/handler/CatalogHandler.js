@@ -7,16 +7,17 @@ module.exports  = {
         var dbModel  = new DbModel();
         dbModel.CatalogName = model.CatalogName;
         dbModel.CatalogObject  = model.CatalogObject;
+        dbModel.CatalogIcon =  model.CatalogIcon  || "https://cdn4.iconfinder.com/data/icons/defaulticon/icons/png/256x256/no.png";
         dbModel.Status  = 1;
         return  dbModel.save();
      },
 
      GetByID  : (Id) =>{
-        return dbModel.findById(Id)
+        return DbModel.findById(Id)
      },
 
      GetAll : () =>{
-        return  dbModel.find({Status: 1})
+        return  DbModel.find({Status: 1})
      },
 
      Update : (model) =>{

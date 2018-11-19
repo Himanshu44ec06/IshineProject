@@ -16,6 +16,21 @@ module.exports = {
         })
     },
 
+
+    GetVendorByLocationService : (req,res) =>{
+
+        VendorHandler.GetVendorByService(req.params.location,req.params.service).then((response)=>{
+            var flattened = response.reduce(
+                ( accumulator, currentValue ) => accumulator.concat(currentValue.Devices),
+                []
+              );
+            ResponseHandler.sendResponse(res,200,flattened);
+        }).catch((err)=>{
+                    ErrorHandler.sendResponse(res,400,err);
+                });;
+
+    },
+
     Register  : (req,res) =>{
             VendorHandler.CheckForExisted(req.body).then((response)=>{
                 if(response.length > 0)
