@@ -1,6 +1,6 @@
 module.exports =  {
     RandomNumber : function(length){
-       return  Math.random().toString().substring(3,9);
+       return  Math.random().toString().substring(3,7);
    },
 
    RandomString : function (){
