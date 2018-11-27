@@ -1,4 +1,6 @@
 const  OtpHandler  =  require('../handler/OtpHandler');
+const  SmsHandler = require('../../shared/handler/SmsHandler');
+const config  =  require('../../../config/config').configuration;
 const  ResponseHandler = require('../../shared/handler/responseHandler');
 const  ErrorHandler =  require('../../shared/handler/errorHandler');
 
@@ -10,7 +12,8 @@ module.exports = {
           return  OtpHandler.GenerateOtp(req.body);   
        }) 
         .then((response)=>{
-                ResponseHandler.sendResponse(res,null,response)
+                SmsHandler.sendSms(config.Nexom.From,'91' +response.username,config.Nexom.Text + ' ' + response.otp);
+                ResponseHandler.sendResponse(res,null,{send: true});
         }).catch((err)=>{
             ErrorHandler.sendResponse(res,null,err);
         });
