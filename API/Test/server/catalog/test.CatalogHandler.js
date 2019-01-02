@@ -5,7 +5,7 @@ var   Tree  = require('../../../Server/modules/shared/handler/CatalogGenerate');
 
 describe("CataLog Handler",()=>{
 
-        xit("Add  Category",(done)=>{
+        it("Add  Category",(done)=>{
 
            
 
@@ -137,13 +137,12 @@ describe("CataLog Handler",()=>{
                         BaseTree.add("Toaster & Griller",Others.id);
                         BaseTree.add("Food Processor",Others.id);
 
-                        console.log(BaseTree.toString());
-
                         handler.Add({
                             CatalogName  : "ApplicationRepair",
                             CatalogObject  : BaseTree.root
                         }).then((response)=>{
-                            if(response.length > 0)
+                            console.log(response);
+                            if(response)
                                     assert(true);
                             else 
                                 assert(false);
