@@ -5,7 +5,7 @@ const handler = require('../../../Server/modules/shared/handler/SmsHandler');
 describe(" SMS Handler ",()=>{
  
 
-    it("Send SMS",(done)=>{
+    xit("Send SMS",(done)=>{
  
 
 

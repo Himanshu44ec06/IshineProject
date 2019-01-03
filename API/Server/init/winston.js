@@ -3,17 +3,22 @@ module.exports = {
     Logger: function() {
   
         const appRoot = require('app-root-path');
-        const winston = require('winston');
+        var winston  = require('winston');
+        const { combine, timestamp, label, printf } = winston.format;
   
+        const myFormat = printf(info => {
+            return `[${info.timestamp || null}][${info.label || null}][${info.level|| null}][${info.guid || null}][${info.message || null}]`;
+          });
+
         // define the custom settings for each transport (file, console)
         var options = {
             file: {
                 level: 'info',
                 filename: `${appRoot}/Server/logs/app.log`,
                 handleExceptions: true,
-                json: true,
-                maxsize: 5242880, // 5MB
-                maxFiles: 5,
+               // json: true,
+               // maxsize: 5242880, // 5MB
+               // maxFiles: 5,
                 colorize: false,
             },
             console: {
@@ -25,9 +30,16 @@ module.exports = {
         };
   
         // instantiate a new Winston Logger with the settings defined above
-        var logger = new winston.Logger({
+        var logger = winston.createLogger({
+            level: 'info',
+            format: combine(
+                label({ label: 'API SERVER' }),
+                timestamp(),
+                myFormat
+              ),
             transports: [
-                new winston.transports.File(options.file),
+                //new winston.transports.File(options.file),
+                new (require('winston-daily-rotate-file'))(options.file),
                 new winston.transports.Console(options.console)
             ],
             exitOnError: false, // do not exit on handled exceptions
